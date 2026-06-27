@@ -1,12 +1,11 @@
 # 🍽️ AI Restaurant Intelligence Platform
 
-A full-stack AI-powered restaurant operations and inventory management system built with **React**, **FastAPI**, **PostgreSQL**, and **Claude AI**.
+A full-stack AI-powered restaurant operations and inventory management system built with **React**, **FastAPI**, and **PostgreSQL**.
 
 ![Platform Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![React](https://img.shields.io/badge/React-18-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-blue)
-![Claude AI](https://img.shields.io/badge/Claude-AI%20Powered-orange)
 
 ---
 

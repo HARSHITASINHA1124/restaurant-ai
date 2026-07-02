@@ -14,7 +14,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # We'll restrict this after deployment
+    allow_origins=[
+        "http://localhost:5173",
+        "https://restaurant-ai-neon.vercel.app/",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

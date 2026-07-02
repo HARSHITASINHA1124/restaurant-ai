@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from ..database import get_db
 from ..models.user import User
@@ -12,13 +12,16 @@ from typing import Optional
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto", bcrypt__rounds=12)
 
 def hash_password(password: str):
-    return pwd_context.hash(password)
+    # Truncate to 72 bytes to avoid bcrypt limitation
+    password_bytes = password.encode('utf-8')[:72]
+    return pwd_context.hash(password_bytes.decode('utf-8', errors='ignore'))
 
 def verify_password(plain: str, hashed: str):
-    return pwd_context.verify(plain, hashed)
+    plain_bytes = plain.encode('utf-8')[:72]
+    return pwd_context.verify(plain_bytes.decode('utf-8', errors='ignore'), hashed)
 
 def create_token(data: dict):
     to_encode = data.copy()
